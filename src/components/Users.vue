@@ -115,7 +115,7 @@
         <el-button type="primary" @click="addUser">确 定</el-button>
       </span>
     </el-dialog>
-    <el-dialog title="编辑用户" :visible.sync="editDialogVisible" width="50%">
+    <el-dialog title="编辑用户" :visible.sync="editDialogVisible" width="50%" @close="editDialogClosed">
       <el-form
         :model="editForm"
         :rules="addFormRules"
@@ -268,11 +268,11 @@ export default {
     addDialogClosed() {
       this.$refs.addFormRef.resetFields()
     },
-    // editDialogClosed() {
-    //   this.$refs.editFormRef.resetFields()
-    // },
+    editDialogClosed() {
+      this.$refs.editFormRef.resetFields()
+    },
     openEditUser(row) {
-      this.editForm = row
+      this.editForm = JSON.parse(JSON.stringify(row))
       this.editDialogVisible = true
     },
     editUser() {
