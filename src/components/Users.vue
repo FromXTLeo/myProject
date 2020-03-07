@@ -60,7 +60,7 @@
             ></el-button>
             <el-tooltip
               effect="dark"
-              content="用户设置"
+              content="分配角色"
               :enterable="false"
               placement="top"
             >
@@ -68,6 +68,7 @@
                 type="warning"
                 size="mini"
                 icon="el-icon-setting"
+                @click="openRoleDialog(scope.row)"
               ></el-button>
             </el-tooltip>
           </template>
@@ -135,6 +136,26 @@
       <span slot="footer" class="dialog-footer">
         <el-button @click="editDialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="editUser">确 定</el-button>
+      </span>
+    </el-dialog>
+    <el-dialog title="分配角色" :visible.sync="roleDialogVisible" width="50%">
+      <span>
+        <p>当前用户：{{roleInfo.username}}</p>
+        <p>当前角色：{{roleInfo.role_name}}</p>
+        <p>分配角色：
+          <el-select v-model="roleValue" placeholder="请选择">
+            <el-option
+              v-for="item in roleOption"
+              :key="item.id"
+              :label="item.roleName"
+              :value="item.id">
+            </el-option>
+          </el-select>
+        </p>
+      </span>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="roleDialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="allotRole">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -216,7 +237,15 @@ export default {
         username: '',
         email: '',
         mobile: ''
-      }
+      },
+      roleDialogVisible: false,
+      roleInfo: {
+        username: '',
+        role_name: ''
+      },
+      roleOption: [],
+      roleValue: '',
+      userId: ''
     }
   },
   created() {
@@ -304,6 +333,26 @@ export default {
         this.$msg.success('删除用户成功！')
         this.getUserData()
       }
+    },
+    async openRoleDialog(row) {
+      this.roleInfo.username = row.username
+      this.roleInfo.role_name = row.role_name
+      const { data: res } = await this.$http.get('roles')
+      if (res.meta.status !== 200) return this.$msg.error(res.meta.msg)
+      this.roleOption = res.data
+      this.roleDialogVisible = true
+      this.userId = row.id
+    },
+    // 分配角色
+    async allotRole() {
+      const { data: res } = await this.$http.put('users/' + this.userId + '/role', {
+        rid: this.roleValue
+      })
+      if (res.meta.status !== 200) return this.$msg.error(res.meta.msg)
+      this.$msg.success(res.meta.msg)
+      this.getUserData()
+      this.roleDialogVisible = false
+      this.roleValue = ''
     }
   }
 }

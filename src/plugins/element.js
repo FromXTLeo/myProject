@@ -27,11 +27,15 @@ import {
   Dialog,
   MessageBox,
   Tag,
-  Tree
+  Tree,
+  Select,
+  Option
 } from 'element-ui'
 
 Vue.use(Tree)
 Vue.use(Tag)
+Vue.use(Select)
+Vue.use(Option)
 Vue.use(Dialog)
 Vue.use(Pagination)
 Vue.use(Tooltip)
