@@ -25,9 +25,13 @@ import {
   Tooltip,
   Pagination,
   Dialog,
-  MessageBox
+  MessageBox,
+  Select,
+  Option
 } from 'element-ui'
 
+Vue.use(Select)
+Vue.use(Option)
 Vue.use(Dialog)
 Vue.use(Pagination)
 Vue.use(Tooltip)
