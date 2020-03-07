@@ -14,12 +14,12 @@ const routes = [
   {
     path: '/home',
     component: Home,
-    redirect: '/home/welcome',
+    redirect: '/welcome',
     children: [
-      { path: '/home/welcome', component: Welcome },
-      { path: '/home/users', component: Users },
-      { path: '/home/roles', component: Role },
-      { path: '/home/rights', component: Right }
+      { path: '/welcome', component: Welcome },
+      { path: '/users', component: Users },
+      { path: '/roles', component: Role },
+      { path: '/rights', component: Right }
     ]
   }
 ]

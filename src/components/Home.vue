@@ -35,7 +35,7 @@
               <span>{{ items.authName }}</span>
             </template>
             <el-menu-item
-              :index="'/home/' + item.path"
+              :index="'/' + item.path"
               v-for="item in items.children"
               :key="item.id"
               ><template slot="title">

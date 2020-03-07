@@ -1,11 +1,11 @@
 <template>
   <div>
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/home/welcome' }"
+      <el-breadcrumb-item :to="{ path: '/welcome' }"
         >首页</el-breadcrumb-item
       >
       <el-breadcrumb-item
-        ><a href="#/home/users">权限管理</a></el-breadcrumb-item
+        ><a href="#roles">权限管理</a></el-breadcrumb-item
       >
       <el-breadcrumb-item>角色列表</el-breadcrumb-item>
     </el-breadcrumb>

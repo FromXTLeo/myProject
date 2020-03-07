@@ -1,12 +1,8 @@
 <template>
   <div>
     <el-breadcrumb separator="/">
-      <el-breadcrumb-item :to="{ path: '/home/welcome' }"
-        >首页</el-breadcrumb-item
-      >
-      <el-breadcrumb-item
-        ><a href="#/home/right">权限管理</a></el-breadcrumb-item
-      >
+      <el-breadcrumb-item :to="{ path: '/welcome' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item><a href="#rights">权限管理</a></el-breadcrumb-item>
       <el-breadcrumb-item>权限列表</el-breadcrumb-item>
     </el-breadcrumb>
     <el-card>
