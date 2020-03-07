@@ -56,6 +56,7 @@ export default {
           if (res.meta.status === 200) {
             _.$msg.success(res.meta.msg)
             window.sessionStorage.setItem('token', res.data.token)
+            _.$router.push('/home')
           } else {
             _.$refs.loginForm.resetFields()
             _.$msg.error(res.meta.msg)
@@ -86,6 +87,9 @@ export default {
     transform: translate(-50%, -50%);
     .login_form_input {
       margin: 43px 20px 0;
+      .el-input {
+        background-color: rgba(0, 0, 0, 0);
+      }
       .login_form_button {
         text-align: center;
       }
