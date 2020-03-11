@@ -7,7 +7,8 @@ import './plugins/element.js'
 import './assets/css/global.css'
 /* 引入iconfont */
 import './assets/fonts/iconfont.css'
-
+/* echarts */
+import echarts from 'echarts'
 /* axios引入 */
 import axios from 'axios'
 /* 全局JS */
@@ -18,6 +19,7 @@ axios.interceptors.request.use(config => {
   config.headers.Authorization = window.sessionStorage.getItem('token')
   return config
 })
+Vue.prototype.$echarts = echarts
 Vue.prototype.$http = axios
 Vue.config.productionTip = false
 
