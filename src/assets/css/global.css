@@ -8,6 +8,14 @@ body,
   padding: 0;
 }
 
-.el-breadcrumb{
-  margin-bottom:15px;
+.el-breadcrumb {
+  margin-bottom: 15px;
+}
+
+.el-scrollbar__wrap {
+  overflow-x: hidden;
+}
+
+.el-cascader-panel {
+  max-height: 200px;
 }
